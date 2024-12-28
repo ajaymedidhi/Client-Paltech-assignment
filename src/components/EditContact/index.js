@@ -9,11 +9,11 @@ const EditContact = () => {
 
     // Initialize the form state
     const [form, setForm] = useState({
-        full_name: "",
-        phone_number: "",
-        email_address: "",
+        fullName: "",
+        phoneNumber: "",
+        email: "",
         address: "",
-        company_name: "",
+        companyName: "",
         position: "",
         notes: "",
     });
@@ -31,14 +31,18 @@ const EditContact = () => {
             setForm(response.data); // Populate form state with fetched data
             setLoading(false); // Set loading to false when data is fetched
         } catch (error) {
-            console.error("Error fetching contact details:", error);
+            console.error("Error fetching contact details:", error.message || error);
             setLoading(false);
         }
     };
 
     // Handle form field changes
     const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setForm((prevForm) => ({
+            ...prevForm,
+            [name]: value,
+        }));
     };
 
     // Handle form submission to update the contact
@@ -48,7 +52,7 @@ const EditContact = () => {
             await updateContact(id, form); // Call updateContact API
             navigate("/"); // Navigate back to the contact list after successful update
         } catch (error) {
-            console.error("Error updating contact:", error);
+            console.error("Error updating contact:", error.message || error);
         }
     };
 
@@ -64,9 +68,9 @@ const EditContact = () => {
                     <label>Full Name</label>
                     <input
                         type="text"
-                        name="full_name"
+                        name="fullName"
                         className="form-control"
-                        value={form.full_name}
+                        value={form.fullName}
                         onChange={handleChange}
                         required
                     />
@@ -75,9 +79,9 @@ const EditContact = () => {
                     <label>Phone Number</label>
                     <input
                         type="text"
-                        name="phone_number"
+                        name="phoneNumber"
                         className="form-control"
-                        value={form.phone_number}
+                        value={form.phoneNumber}
                         onChange={handleChange}
                         required
                     />
@@ -86,9 +90,9 @@ const EditContact = () => {
                     <label>Email</label>
                     <input
                         type="email"
-                        name="email_address"
+                        name="email"
                         className="form-control"
-                        value={form.email_address}
+                        value={form.email}
                         onChange={handleChange}
                         required
                     />
@@ -107,9 +111,9 @@ const EditContact = () => {
                     <label>Company Name</label>
                     <input
                         type="text"
-                        name="company_name"
+                        name="companyName"
                         className="form-control"
-                        value={form.company_name}
+                        value={form.companyName}
                         onChange={handleChange}
                     />
                 </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createContact } from "../../api";
+import { createContact } from "../../api"; // Assuming you have a function for API call
 import './style.css';
 
 const AddContact = () => {
@@ -22,40 +22,42 @@ const AddContact = () => {
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
         const formData = {
-            full_name: form.fullName,
-            phone_number: form.phoneNumber,
-            email_address: form.email,
+            fullName: form.fullName,
+            phoneNumber: form.phoneNumber,
+            email: form.email,
             address: form.address,
-            company_name: form.companyName,
+            companyName: form.companyName,
             position: form.position,
             notes: form.notes,
         };
-    
+
         try {
             console.log("Submitting form data:", formData); // Debugging line
-            const response = await createContact(formData); // API call
+
+            // Call the API to create the contact
+            const response = await createContact(formData); // Assuming createContact makes an API call
             console.log("API response:", response); // Debugging line
-    
+
             setMessage("Contact added successfully!");
             setMessageType("success");
             window.alert("Contact added successfully!");
-    
+
             setTimeout(() => {
                 navigate("/"); // Redirect after success
-            }, 3000); // 2-second delay for user to see the message
+            }, 3000); // 3-second delay for user to see the message
         } catch (error) {
             console.error("Error creating contact:", error.response?.data || error.message);
-    
+
             setMessage("Failed to add contact. Please try again.");
             setMessageType("error");
             window.alert("Failed to add contact. Please try again.");
         }
     };
-    
 
     return (
         <div className="add-contact-container">
