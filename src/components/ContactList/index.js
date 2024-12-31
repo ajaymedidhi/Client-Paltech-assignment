@@ -56,15 +56,27 @@ const ContactList = () => {
     };
 
     // Handle viewing contact details in a modal
-    const handleView = async id => {
+    // const handleView = async id => {
+    //     try {
+    //         const response = await getContact(id);
+    //         setSelectedContact(response.data);
+    //         setShowModal(true);
+    //     } catch (error) {
+    //         console.error("Error fetching contact details:", error);
+    //     }
+    // }; 
+
+    const handleView = async (id) => {
         try {
             const response = await getContact(id);
+            console.log("Fetched contact details:", response.data); // Debugging
             setSelectedContact(response.data);
             setShowModal(true);
         } catch (error) {
             console.error("Error fetching contact details:", error);
         }
     };
+    
 
     // Close the modal
     const handleCloseModal = () => {
@@ -127,7 +139,7 @@ const ContactList = () => {
                                     </button>
                                     <Link
                                         to={`/edit/${contact._id}`}
-                                        className="btn btn-warning btn-sm mx-2"
+                                        className="btn btn-warning btn-sm"
                                     >
                                         Edit
                                     </Link>

@@ -50,11 +50,14 @@ const EditContact = () => {
         e.preventDefault();
         try {
             await updateContact(id, form); // Call updateContact API
+            window.alert("Contact updated successfully!"); // Show success alert
             navigate("/"); // Navigate back to the contact list after successful update
         } catch (error) {
             console.error("Error updating contact:", error.message || error);
+            window.alert("Failed to update contact. Please try again."); // Show error alert
         }
     };
+    
 
     if (loading) {
         return <div className="container mt-4">Loading contact details...</div>;

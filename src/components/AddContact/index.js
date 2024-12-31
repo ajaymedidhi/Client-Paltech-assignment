@@ -49,7 +49,7 @@ const AddContact = () => {
 
             setTimeout(() => {
                 navigate("/"); // Redirect after success
-            }, 3000); // 3-second delay for user to see the message
+            }, 2000); // 3-second delay for user to see the message
         } catch (error) {
             console.error("Error creating contact:", error.response?.data || error.message);
 

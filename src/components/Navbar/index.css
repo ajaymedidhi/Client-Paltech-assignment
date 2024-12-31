@@ -1,14 +1,13 @@
-/* Navbar container */
+
 .navbar {
-    background: linear-gradient(90deg, #1f4037, #99f2c8); /* Gradient background */
+    background: linear-gradient(90deg, #1f4037, #99f2c8); 
     padding: 10px 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-/* Navbar brand styling */
 .navbar-brand {
     font-size: 1.8rem;
     font-weight: bold;
@@ -58,7 +57,9 @@
 
     .navbar .btn {
         font-size: 0.9rem;
-        padding: 8px 15px;
+        padding: 6px 10px;
+        text-align: center;
+        width: 90px;
     }
 }
 

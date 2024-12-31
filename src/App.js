@@ -4,7 +4,6 @@ import Navbar from "./components/Navbar";
 import ContactList from "./components/ContactList";
 import AddContact from "./components/AddContact";
 import EditContact from "./components/EditContact";
-import ViewContact from "./components/ViewContact";
 
 const App = () => {
     return (
@@ -14,7 +13,6 @@ const App = () => {
                 <Route path="/" element={<ContactList />} />
                 <Route path="/add" element={<AddContact />} />
                 <Route path="/edit/:id" element={<EditContact />} />
-                <Route path="/view/:id" element={<ViewContact />} />
             </Routes>
         </Router>
     );
